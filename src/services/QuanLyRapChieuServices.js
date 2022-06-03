@@ -26,4 +26,5 @@ export class QuanLyRapChieuServices extends baseServices {
 
 
 }
+
 export const quanLyRapChieuServices = new QuanLyRapChieuServices();
