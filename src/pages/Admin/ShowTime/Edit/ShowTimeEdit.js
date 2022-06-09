@@ -17,7 +17,7 @@ import { layDanhSachPhimAction } from '../../../../redux/Actions/QuanLyPhimActio
 import { quanLyPhongServices } from '../../../../services/QuanLyPhongServices';
 import { layDanhSachPhongAction } from '../../../../redux/Actions/QuanLyPhongAction';
 import { layDanhSachRapChieuAction } from '../../../../redux/Actions/QuanLyRapChieuAction';
-import { quanLySeatsServices } from '../../../../services/QuanLySeatsServicer';
+import { quanLySeatsServices } from '../../../../services/QuanLySeatsServices';
 export default function ShowTimeEdit(props) {
     const dispatch = useDispatch();
     const { showTimeEdit } = useSelector(state => state.QuanLyLichChieuReducer);

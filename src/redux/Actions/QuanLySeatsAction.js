@@ -1,4 +1,4 @@
-import { quanLySeatsServices } from "../../services/QuanLySeatsServicer"
+import { quanLySeatsServices } from "../../services/QuanLySeatsServices"
 import { SET_LIST_GHE } from './../Types/QuanLySeatsType';
 
 export const themSeatsAction = (dataCreate) => {

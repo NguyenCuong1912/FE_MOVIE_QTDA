@@ -3,7 +3,7 @@ import { LICH_CHIEU_EDIT, SET_LICH_CHIEU, SET_LICH_CHIEU_THEO_HE_THONG_RAP } fro
 import { message } from 'antd';
 import { history } from "../../App";
 import { themSeatsAction } from "./QuanLySeatsAction";
-import { quanLySeatsServices } from "../../services/QuanLySeatsServicer";
+import { quanLySeatsServices } from "../../services/QuanLySeatsServices";
 
 export const layDanhSachLichChieuAction = (name = '') => {
     return async dispatch => {
