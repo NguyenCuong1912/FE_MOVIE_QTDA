@@ -2,16 +2,19 @@ import { history } from "../../App";
 import { quanLyCumRapServices } from "../../services/QuanLyCumRapServices";
 import { GROUP_CINEMAS_EDIT, SET_GROUP_CINEMAS } from './../Types/QuanLyCumRapType';
 import { message } from 'antd';
+import { displayLoading, hiddenLoading } from "../../_core/Models/Loading";
 
 export const layDanhSachCumRapAction = () => {
     return async dispatch => {
         try {
             const result = await quanLyCumRapServices.layDanhSachCumRap();
             if (result.status === 200) {
+
                 dispatch({
                     type: SET_GROUP_CINEMAS,
                     dataGroupCinemas: result.data
                 })
+                // dispatch(hiddenLoading)
             }
         } catch (error) {
             console.log(error);

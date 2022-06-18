@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Table, Input, Popconfirm, message, Button } from 'antd';
@@ -5,9 +6,9 @@ import { PlusOutlined, EditOutlined, DeleteOutlined, LockOutlined, UnlockOutline
 import { layDanhSachnguoiDungAction, lockAndUnLockAction, xoaNguoiDungAction } from './../../../redux/Actions/QuanLyNguoiDungAction';
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../App';
+import Export_Excel from './../../../components/Excel/Export_Excel';
 export default function User(props) {
     const { listUser } = useSelector(state => state.QuanLyNguoiDungReducer);
-    // console.log("lsst", listUser)
     const confirm = (id, status) => {
         if (status === 'Unlock') {
             dispatch(lockAndUnLockAction(id, { isBlock: 0 }))
@@ -94,13 +95,27 @@ export default function User(props) {
         dispatch(layDanhSachnguoiDungAction(value));
     };
     const { Search } = Input;
+    const dataExport = listUser.map((user) => {
+        if (user.isActive) {
+            return {
+                Tên: user.userName,
+                Email: user.email,
+                Phone: user.phoneNumber,
+                Trạng_Thái: user.isBlock === true ? "Khóa" : "Hoạt Động",
+                Loại_Tai_Khoản: user.type_user.nameType
+            }
+        }
+    })
     return (
         <Fragment>
             <h2 className='text-center my-4 text-2xl'>QUẢN LÝ TÀI KHOẢN</h2>
-            <div className='mx-10 mb-5'>
+            <div className='mx-10 mb-5 flex justify-between'>
                 <button onClick={() => {
                     history.push('/Admin/Users/Create');
                 }} className='text-white bg-sky-500 flex items-center justify-center px-3 py-2'><PlusOutlined />Thêm Tài Khoản</button>
+
+                <Export_Excel csvData={dataExport} fileName={"user"} />
+
             </div>
             <div className='mx-36 my-3'>
                 <Search placeholder="Nhập tên người dùng" onSearch={onSearch} enterButton />

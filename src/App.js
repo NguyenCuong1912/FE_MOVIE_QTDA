@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Switch, Route, Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import SignUp from './pages/Admin/SignUp/SignUp';
@@ -39,14 +39,19 @@ import SystemCinema from './pages/Client/SystemCinema/SystemCinema';
 import DetailsCinema from './pages/Client/DetailsCinema/DetailsCinema';
 import Ticket from './pages/Admin/Ticket/Ticket';
 import UserWithShowTime from './pages/Admin/ShowTime/UserWithShowTime/UserWithShowTime';
-
+import Checkout_Success from './components/Success_Error/Checkout_Success';
+import Checkout_Error from './components/Success_Error/Checkout_Error';
+import Loading from './components/Loading/Loading';
 
 export const history = createBrowserHistory();
 export default function App() {
   return (
     <Router history={history}>
+      <Loading />
       <ModalTrailer />
       <Switch>
+        <Route path='/success' exact component={Checkout_Success} />
+        <Route path='/error' exact component={Checkout_Error} />
         <Form path='/signUp' exact Component={SignUp} />
         <Form path='/signIn' exact Component={SignIn} />
         {/* admin */}

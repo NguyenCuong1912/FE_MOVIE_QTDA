@@ -11,16 +11,17 @@ export const datVe = (dataCreate) => {
                 await dispatch({
                     type: CLEAR_VE_DANG_CHON
                 })
+                sessionStorage.removeItem("STORE")
                 await dispatch(layDanhSachGheTheoLichChieu(dataCreate.idShowTime))
                 await dispatch(danhSachVeTheoUserAction(dataCreate.userId))
                 await dispatch({
                     type: SET_CHANGE_TABS,
                     number: 2
                 })
-                await message.success("Đặt vé thành công");
+                // await message.success("Đặt vé thành công");
             }
         } catch (error) {
-            message.error("Thất Bại");
+            // message.error("Thất Bại");
             console.log(error)
         }
     }

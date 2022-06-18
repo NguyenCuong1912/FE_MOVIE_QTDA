@@ -13,6 +13,8 @@ import { CHON_GHE, CLEAR_VE_DANG_CHON } from '../../../redux/Types/QuanLySeatsTy
 import { danhSachVeTheoUserAction, datVe } from '../../../redux/Actions/QuanLyTicketAction';
 import { SET_CHANGE_TABS } from '../../../redux/Types/QuanLyTicketType';
 import Countdown from 'react-countdown';
+import { Redirect } from 'react-router-dom';
+import { RequirementCheckoutAction } from '../../../redux/Actions/QuanLyCheckoutAction';
 function Checkout(props) {
     const dispatch = useDispatch();
     const { phongVe, listGheDangDat } = useSelector(state => state.QuanLySeatsReducer);
@@ -150,7 +152,20 @@ function Checkout(props) {
                             listTicket: listGheDangDat,
                             idShowTime: props.match.params.id
                         }
-                        dispatch(datVe(thongTinVeDat))
+                        window.sessionStorage.setItem("STORE", JSON.stringify(thongTinVeDat));
+
+                        let data = [];
+                        let obj = {};
+                        for (let index = 0; index < listGheDangDat.length; index++) {
+                            obj.name = listGheDangDat[index].seatName
+                            obj.sku = 'ticket'
+                            obj.price = listGheDangDat[index].price * 1
+                            obj.currency = 'USD'
+                            obj.quantity = 1;
+                            data.push(obj);
+                        }
+                        dispatch(RequirementCheckoutAction(data))
+
                     } else {
                         alert("Bạn cần chọn ghế ngồi ")
                     }

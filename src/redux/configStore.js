@@ -10,6 +10,7 @@ import QuanLyLichChieuReducer from './Reducers/QuanLyLichChieuReducer';
 import QuanLySeatsReducer from './Reducers/QuanLySeatsReducer';
 import QuanLyTicketReducer from './Reducers/QuanLyTicketReducer';
 import ModalReducer from './Reducers/ModalReducer';
+import LoadingReducer from './Reducers/LoadingReducer';
 
 const rootReducers = combineReducers({
     QuanLyNguoiDungReducer,
@@ -21,7 +22,8 @@ const rootReducers = combineReducers({
     QuanLyLichChieuReducer,
     QuanLySeatsReducer,
     QuanLyTicketReducer,
-    ModalReducer
+    ModalReducer,
+    LoadingReducer
 
 });
 export const store = createStore(rootReducers, applyMiddleware(thunk));

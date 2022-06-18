@@ -2,7 +2,8 @@ import { SET_CHANGE_TABS, SET_LIST_TICKET_WITH_USER } from "../Types/QuanLyTicke
 
 const initialState = {
     lstTicketWithUser: [],
-    tabChange: 1
+    tabChange: 1,
+    store: []
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
